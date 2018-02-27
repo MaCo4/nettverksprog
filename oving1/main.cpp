@@ -2,15 +2,12 @@
 #include <thread>
 #include <vector>
 #include <mutex>
-#include <cmath>
-#include <algorithm>
+#include "is_prime.cpp"
 
 using namespace std;
 using namespace chrono;
 
 
-
-bool is_prime(int num);
 
 int main() {
 
@@ -53,16 +50,4 @@ int main() {
     
     cout << endl;
     return 0;
-}
-
-bool is_prime(int num) {
-    if (num == 0 || num == 1) return false;
-    if (num == 2) return true;
-    if ((num & 1) == 0) return false;
-
-    for (int i = 3; i <= sqrt(num); i += 2) {
-        if (num % i == 0) return false;
-    }
-
-    return true;
 }
