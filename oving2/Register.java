@@ -1,10 +1,8 @@
-import java.util.*;
-
 /*
  * Klassen Utstyr er mutabel. Antall på lager og nedre grense for
  * bestilling kan endres.
  */
-class Utstyr {
+class UtstyrImpl implements Utstyr {
     public static final int bestillingsfaktor = 5;
     private int nr;  // entydig identifikasjon
     private String betegnelse;
@@ -12,8 +10,8 @@ class Utstyr {
     private int påLager;     // mengde på lager
     private int nedreGrense;
 
-    public Utstyr(int startNr, String startBetegnelse, String startLeverandør,
-                  int startPåLager, int startNedreGrense) {
+    public UtstyrImpl(int startNr, String startBetegnelse, String startLeverandør,
+                      int startPåLager, int startNedreGrense) {
         nr = startNr;
         betegnelse = startBetegnelse;
         leverandør = startLeverandør;
@@ -21,26 +19,32 @@ class Utstyr {
         nedreGrense = startNedreGrense;
     }
 
+    @java.lang.Override
     public int finnNr() {
         return nr;
     }
 
+    @java.lang.Override
     public String finnBetegnelse() {
         return betegnelse;
     }
 
+    @java.lang.Override
     public String finnLeverandør() {
         return leverandør;
     }
 
+    @java.lang.Override
     public int finnPåLager() {
         return påLager;
     }
 
+    @java.lang.Override
     public int finnNedreGrense() {
         return nedreGrense;
     }
 
+    @java.lang.Override
     public int finnBestKvantum() {
         if (påLager < nedreGrense) return bestillingsfaktor * nedreGrense;
         else return 0;
@@ -51,6 +55,7 @@ class Utstyr {
      * mulig å ta ut mer enn det som fins på lager. Hvis klienten
      * prøver på det, vil metoden returnere false, og intet uttak gjøres.
      */
+    @java.lang.Override
     public boolean endreLagerbeholdning(int endring) {
         System.out.println("Endrer lagerbeholdning, utstyr nr " + nr + ", endring: " + endring);
         if (påLager + endring < 0) return false;
@@ -60,10 +65,12 @@ class Utstyr {
         }
     }
 
+    @java.lang.Override
     public void settNedreGrense(int nyNedreGrense) {
         nedreGrense = nyNedreGrense;
     }
 
+    @java.lang.Override
     public String toString() {
         String resultat = "Nr: " + nr + ", " +
                 "Betegnelse: " + betegnelse + ", " + "Leverandør: " +
@@ -86,6 +93,7 @@ class Register {
 
     private ArrayList<Utstyr> registeret = new ArrayList<Utstyr>();
 
+    @java.lang.Override
     public boolean regNyttUtstyr(int startNr, String startBetegnelse,
                                  String startLeverandør, int startPåLager, int startNedreGrense) {
         if (finnUtstyrindeks(startNr) < 0) { // fins ikke fra før
@@ -93,9 +101,12 @@ class Register {
                     startPåLager, startNedreGrense);
             registeret.add(nytt);
             return true;
-        } else return false;
+        } else {
+            return false;
+        }
     }
 
+    @java.lang.Override
     public int endreLagerbeholdning(int nr, int mengde) {
         int indeks = finnUtstyrindeks(nr);
         if (indeks < 0) return ugyldigNr;
@@ -114,6 +125,7 @@ class Register {
         return -1;
     }
 
+    @java.lang.Override
     public String lagBestillingsliste() {
         String resultat = "\n\nBestillingsliste:\n";
         for (int i = 0; i < registeret.size(); i++) {
@@ -124,6 +136,7 @@ class Register {
         return resultat;
     }
 
+    @java.lang.Override
     public String lagDatabeskrivelse() {
         String resultat = "Alle data:\n";
         for (int i = 0; i < registeret.size(); i++) {
