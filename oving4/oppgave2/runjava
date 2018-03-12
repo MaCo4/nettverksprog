@@ -1,0 +1,3 @@
+java JavaSSLServer -Djavax.net.ssl.keyStore=thekeystore -Djavax.net.ssl.keyStorePassword=password
+
+java JavaSSLClient -Djavax.net.ssl.trustStore=thekeystore -Djavax.net.ssl.trustStorePassword=password

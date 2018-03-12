@@ -1,5 +1,6 @@
 import socket
 
+
 if __name__ == "__main__":
     srvsock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     srvsock.bind(("0.0.0.0", 1250))
@@ -16,5 +17,5 @@ if __name__ == "__main__":
             num1, num2 = request.split("-")
             result = int(num1) - int(num2)
 
-        print("Forespurt: {}, svar: {}, fra: {}".format(request, result, addr))
-        srvsock.sendto(str(result).encode("utf-8"), addr)
+        print("Klienten {}:{} forespurte: {}. Svar: {}".format(addr[0], addr[1], request, result))
+        srvsock.sendto((str(result) + "\n").encode("utf-8"), addr)
