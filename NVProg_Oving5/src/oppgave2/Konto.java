@@ -1,6 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package oppgave2;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+/**
+ *
+ * @author Magnus
+ */
 
 @Entity
 public class Konto {
@@ -8,9 +19,9 @@ public class Konto {
     private long kontonr;
     private double saldo;
     private String eier;
-
+    
     public Konto() {
-
+        
     }
 
     public long getKontonr() {
@@ -38,6 +49,7 @@ public class Konto {
     }
 
     public void trekk(double belop) {
-        this.saldo -= belop;
+
     }
 }
+
