@@ -5,7 +5,7 @@ import javax.persistence.Persistence;
 
 public class Klient {
     public static void main(String[] args) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("NVProg_Oving5PU");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Oving5PU");
         KontoDAO dao = new KontoDAO(entityManagerFactory);
 
         Konto konto1 = new Konto();
