@@ -2,5 +2,5 @@
 cmake-build-debug/
 
 *.class
-/NVProg_Oving5/nbproject/private/
-/NVProg_Oving5/build/
+**/nbproject/private/
+build/
