@@ -4,3 +4,4 @@ cmake-build-debug/
 *.class
 **/nbproject/private/
 build/
+/oving5/dist/
