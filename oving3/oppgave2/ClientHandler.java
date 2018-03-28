@@ -1,4 +1,4 @@
-package oppgave2;
+package oppgaver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
