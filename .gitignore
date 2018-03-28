@@ -4,3 +4,7 @@ cmake-build-debug/
 *.class
 **/nbproject/private/
 build/
+
+node_modules/
+dist/
+package-lock.json
