@@ -11,7 +11,7 @@ import websockets
 def grab_screen():
     img = pyscreenshot.grab()
     buf = BytesIO()
-    img.save(buf, format="JPEG", quality=15)
+    img.save(buf, format="JPEG", quality=30)
     return base64.b64encode(buf.getvalue()).decode("utf-8")
 
 
@@ -33,7 +33,7 @@ def start_ws_server():
 
     asyncio.set_event_loop(asyncio.new_event_loop())
     asyncio.get_event_loop().run_until_complete(
-        websockets.serve(ws_serve_client, "localhost", 9000)
+        websockets.serve(ws_serve_client, "0.0.0.0", 9000)
     )
     asyncio.get_event_loop().run_forever()
 
@@ -49,7 +49,7 @@ def start_flask_app():
     def static_files(path):
         return flask.send_from_directory("", path)
 
-    app.run(port=80)
+    app.run(host='0.0.0.0', port=80)
 
 
 def main():
